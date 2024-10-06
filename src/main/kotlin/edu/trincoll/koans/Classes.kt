@@ -1,5 +1,9 @@
 package edu.trincoll.koans
 
+// Rename on import should be at the top
+import kotlin.random.Random as KRandom
+import java.util.Random as JRandom
+
 // Data classes
 data class Person(val name: String, val age: Int)
 
@@ -33,9 +37,12 @@ fun eval(expr: Expr): Int =
         else -> throw IllegalArgumentException("Unknown expression")
     }
 
-// Rename on import
-import kotlin.random.Random as KRandom
-import java.util.Random as JRandom
+// Extension functions
+fun Int.r(): RationalNumber = RationalNumber(this, 1)
+
+fun Pair<Int, Int>.r(): RationalNumber = RationalNumber(this.first, this.second)
+
+data class RationalNumber(val numerator: Int, val denominator: Int)
 
 fun useDifferentRandomClasses(): String {
     return "Kotlin random: " +
@@ -44,10 +51,3 @@ fun useDifferentRandomClasses(): String {
             JRandom().nextInt(2) +  // Generates a number between 0 and 1
             "."
 }
-
-// Extension functions
-fun Int.r(): RationalNumber = RationalNumber(this, 1)
-
-fun Pair<Int, Int>.r(): RationalNumber = RationalNumber(this.first, this.second)
-
-data class RationalNumber(val numerator: Int, val denominator: Int)
