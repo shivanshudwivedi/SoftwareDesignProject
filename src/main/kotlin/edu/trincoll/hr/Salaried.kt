@@ -11,6 +11,6 @@ class Salaried(
     }
 
     override fun toString(): String {
-        return "Salaried(name='$name', id=$id, salary=$salary)"
+        return "Salaried(name=$name, id=$id, salary=$salary)"
     }
 }
